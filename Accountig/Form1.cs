@@ -14,16 +14,9 @@ namespace Accountig
     public partial class MainWindow : Form
     {
         SqlConnection SqlConnection;
-        async void Refresh()
+        private async void RefreshTable()
         {
-            SqlConnection SqlConnection;
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'C:\Users\dmytro\Documents\Visual Studio 2015\Projects\Accountig\Accountig\Database.mdf'; Integrated Security = True";
-            // открытие асинхронного запроса
-            SqlConnection = new SqlConnection(connectionString);
-            await SqlConnection.OpenAsync();
-            // поучить данные в табл представлении
             SqlDataReader SqlReader = null;
-            //запрос sqlCommand(инструкция, )
             SqlCommand command = new SqlCommand("SELECT * FROM [Invoice] ", SqlConnection);
 
             // обработчик
@@ -50,9 +43,7 @@ namespace Accountig
                     SqlReader.Close();
                 }
             }
-
         }
-
 
         public MainWindow()
         {
@@ -121,9 +112,9 @@ namespace Accountig
                 command.Parameters.AddWithValue("Account", textBox2.Text);
 
                 await command.ExecuteNonQueryAsync();
+                RefreshTable();
 
-                listBox1.Items.Clear();
-                Refresh();
+
             }
             else
             {
