@@ -57,6 +57,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.label9 = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             TabControl = new System.Windows.Forms.TabControl();
             TabControl.SuspendLayout();
             this.ShowClients.SuspendLayout();
@@ -305,6 +306,7 @@
             // 
             // ClientByName
             // 
+            this.ClientByName.Controls.Add(this.listBox3);
             this.ClientByName.Controls.Add(this.button3);
             this.ClientByName.Controls.Add(this.textBox6);
             this.ClientByName.Location = new System.Drawing.Point(4, 22);
@@ -316,18 +318,19 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(235, 172);
+            this.button3.Location = new System.Drawing.Point(215, 203);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 23);
             this.button3.TabIndex = 1;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(235, 94);
+            this.textBox6.Location = new System.Drawing.Point(164, 145);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(109, 20);
+            this.textBox6.Size = new System.Drawing.Size(212, 20);
             this.textBox6.TabIndex = 0;
             // 
             // menuStrip1
@@ -347,6 +350,14 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "labe9";
             this.label9.Visible = false;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(8, 8);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(554, 95);
+            this.listBox3.TabIndex = 2;
             // 
             // MainWindow
             // 
@@ -404,6 +415,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }
 

@@ -166,5 +166,47 @@ namespace Accountig
                 label9.Text = "Input Id !";
             }
         }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            // подключение к БД
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'C:\Users\dmytro\Documents\Visual Studio 2015\Projects\Accountig\Accountig\Database.mdf'; Integrated Security = True";
+            // открытие асинхронного запроса
+            SqlConnection = new SqlConnection(connectionString);
+            await SqlConnection.OpenAsync();
+            // поучить данные в табл представлении
+            SqlDataReader SqlReader = null;
+            //запрос sqlCommand(инструкция, )
+            SqlCommand command = new SqlCommand("SELECT * FROM [Invoice] WHERE [Name]=@Name ", SqlConnection);
+
+            command.Parameters.AddWithValue("Name", textBox6.Text);
+
+            // обработчик
+            try
+            {
+                // присвоить результат выполнения команды для дальнейшего вывода
+                SqlReader = await command.ExecuteReaderAsync();
+                while (await SqlReader.ReadAsync())
+                {
+                    // вывод таблицы
+                    listBox3.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                // показать сообщение MessageBox.Show(текст, заголовок, кнопка, иконка)
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // обязательно закрыть ридер если ему все же было присвоено значение
+                if (SqlReader != null)
+                {
+                    
+                    SqlReader.Close();
+                }
+            }
+        }
     }
 }
