@@ -33,6 +33,7 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.AddClient = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             TabControl = new System.Windows.Forms.TabControl();
             TabControl.SuspendLayout();
             this.ShowClients.SuspendLayout();
@@ -123,6 +124,18 @@
             this.AddClient.Text = "Add";
             this.AddClient.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.Coral;
+            this.label6.Location = new System.Drawing.Point(108, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "label6";
+            this.label6.Visible = false;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(204, 183);
@@ -167,6 +180,7 @@
             // 
             // UpdateClinet
             // 
+            this.UpdateClinet.Controls.Add(this.label8);
             this.UpdateClinet.Controls.Add(this.label5);
             this.UpdateClinet.Controls.Add(this.textBox5);
             this.UpdateClinet.Controls.Add(this.button2);
@@ -206,6 +220,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -311,17 +326,14 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // label6
+            // label8
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.Color.Coral;
-            this.label6.Location = new System.Drawing.Point(108, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
-            this.label6.Visible = false;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(382, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Visible = false;
             // 
             // MainWindow
             // 
@@ -377,6 +389,7 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
     }
 }
 

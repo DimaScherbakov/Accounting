@@ -16,6 +16,7 @@ namespace Accountig
         SqlConnection SqlConnection;
         private async void RefreshTable()
         {
+            listBox1.Items.Clear();
             SqlDataReader SqlReader = null;
             SqlCommand command = new SqlCommand("SELECT * FROM [Invoice] ", SqlConnection);
 
@@ -120,6 +121,27 @@ namespace Accountig
             {
                 label6.Visible = true;
                 label6.Text = "Input all data!";
+            }
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (label8.Visible) { label8.Visible = false; };
+            if (!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrWhiteSpace(textBox5.Text))
+            {
+                SqlCommand command = new SqlCommand("UPDATE [Invoice] SET [Name] = @Name, [Account] = @Account WHERE [Id] = @Id",SqlConnection);
+
+                command.Parameters.AddWithValue("Id", textBox5.Text);
+                command.Parameters.AddWithValue("Name", textBox4.Text);
+                command.Parameters.AddWithValue("Account", textBox3.Text);
+
+               await command.ExecuteNonQueryAsync();
+                RefreshTable();
+            }
+            else
+            {
+                label8.Text = "Input Id !";
+                label8.Visible = true;
             }
         }
     }
