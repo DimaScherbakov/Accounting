@@ -68,5 +68,56 @@ namespace Accountig
             if (SqlConnection != null && SqlConnection.State != ConnectionState.Closed)
                 SqlConnection.Close();
         }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (label6.Visible) { label6.Visible = false; };
+
+            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox1.Text) &&
+                !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO [Invoice] (Name, Account)VALUES(@Name,@Account)", SqlConnection);
+                //присвоить параметры для использования в инструкции
+                command.Parameters.AddWithValue("Name", textBox1.Text);
+                command.Parameters.AddWithValue("Account", textBox2.Text);
+
+                await command.ExecuteNonQueryAsync();
+
+                listBox1.Items.Clear();
+                SqlDataReader SqlReader = null;
+                //запрос sqlCommand(инструкция, )
+                command = new SqlCommand("SELECT * FROM [Invoice] ", SqlConnection);
+
+                // обработчик
+                try
+                {
+                    // присвоить результат выполнения команды для дальнейшего вывода
+                    SqlReader = await command.ExecuteReaderAsync();
+                    while (await SqlReader.ReadAsync())
+                    {
+                        // вывод таблицы
+                        listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // показать сообщение MessageBox.Show(текст, заголовок, кнопка, иконка)
+                    MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // обязательно закрыть ридер если ему все же было присвоено значение
+                    if (SqlReader != null)
+                    {
+                        SqlReader.Close();
+                    }
+                }
+            }
+            else
+            {
+                label6.Visible = true;
+                label6.Text = "Input all data!";
+            }
+        }
     }
 }
