@@ -144,5 +144,27 @@ namespace Accountig
                 label8.Visible = true;
             }
         }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            if (label9.Visible)
+            { label9.Visible = false; }
+
+            if (!string.IsNullOrEmpty(textBox8.Text) && !string.IsNullOrWhiteSpace(textBox8.Text))
+            {
+                SqlCommand command = new SqlCommand("DELETE FROM [Invoice] WHERE [Id]=@Id", SqlConnection);
+
+                command.Parameters.AddWithValue("Id", textBox8.Text);
+
+                await command.ExecuteNonQueryAsync();
+                RefreshTable();
+            }
+            else
+            {
+                label9.Visible = true;
+
+                label9.Text = "Input Id !";
+            }
+        }
     }
 }

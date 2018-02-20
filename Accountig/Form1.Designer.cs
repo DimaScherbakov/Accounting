@@ -40,6 +40,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.UpdateClinet = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             TabControl = new System.Windows.Forms.TabControl();
             TabControl.SuspendLayout();
             this.ShowClients.SuspendLayout();
@@ -195,6 +196,15 @@
             this.UpdateClinet.Text = "Update";
             this.UpdateClinet.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(382, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Visible = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -256,6 +266,7 @@
             // 
             // Delete
             // 
+            this.Delete.Controls.Add(this.label9);
             this.Delete.Controls.Add(this.button4);
             this.Delete.Controls.Add(this.label7);
             this.Delete.Controls.Add(this.textBox8);
@@ -274,6 +285,7 @@
             this.button4.TabIndex = 9;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label7
             // 
@@ -326,14 +338,15 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // label8
+            // label9
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(382, 42);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Visible = false;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(347, 107);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "labe9";
+            this.label9.Visible = false;
             // 
             // MainWindow
             // 
@@ -390,6 +403,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 
