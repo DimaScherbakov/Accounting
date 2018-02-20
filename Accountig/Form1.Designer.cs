@@ -49,12 +49,17 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             TabControl = new System.Windows.Forms.TabControl();
             TabControl.SuspendLayout();
             this.ShowClients.SuspendLayout();
             this.AddClient.SuspendLayout();
             this.UpdateClinet.SuspendLayout();
             this.ClientByName.SuspendLayout();
+            this.Delete.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -62,6 +67,7 @@
             TabControl.Controls.Add(this.ShowClients);
             TabControl.Controls.Add(this.AddClient);
             TabControl.Controls.Add(this.UpdateClinet);
+            TabControl.Controls.Add(this.Delete);
             TabControl.Controls.Add(this.ClientByName);
             TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             TabControl.Location = new System.Drawing.Point(0, 0);
@@ -257,6 +263,43 @@
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // Delete
+            // 
+            this.Delete.Controls.Add(this.button4);
+            this.Delete.Controls.Add(this.label7);
+            this.Delete.Controls.Add(this.textBox8);
+            this.Delete.Location = new System.Drawing.Point(4, 22);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(570, 301);
+            this.Delete.TabIndex = 4;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(208, 156);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(121, 23);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(208, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "ID";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(229, 104);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 6;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +317,8 @@
             this.UpdateClinet.PerformLayout();
             this.ClientByName.ResumeLayout(false);
             this.ClientByName.PerformLayout();
+            this.Delete.ResumeLayout(false);
+            this.Delete.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -299,6 +344,10 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TabPage Delete;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox8;
     }
 }
 
