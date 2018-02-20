@@ -51,7 +51,7 @@ namespace Accountig
             catch (Exception ex)
             {
                 // показать сообщение MessageBox.Show(текст, заголовок, кнопка, иконка)
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -61,6 +61,12 @@ namespace Accountig
                     SqlReader.Close();
                 }        
             }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (SqlConnection != null && SqlConnection.State != ConnectionState.Closed)
+                SqlConnection.Close();
         }
     }
 }
