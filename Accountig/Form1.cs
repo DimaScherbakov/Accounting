@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Accountig
 {
+
     public partial class MainWindow : Form
     {
+
         SqlConnection SqlConnection;
         private async void RefreshTable()
         {
@@ -58,8 +61,12 @@ namespace Accountig
 
         private async void MainWindow_Load(object sender, EventArgs e)
         {
+            string dir = Directory.GetCurrentDirectory();
+            dir = System.IO.Path.GetDirectoryName(dir);
+            dir = System.IO.Path.GetDirectoryName(dir);
+            dir = String.Concat(dir, @"\");
             // подключение к БД
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'C:\Users\dmytro\Documents\Visual Studio 2015\Projects\Accountig\Accountig\Database.mdf'; Integrated Security = True";
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = "+@dir+"Database.mdf; Integrated Security = True";
             // открытие асинхронного запроса
             SqlConnection = new SqlConnection(connectionString);
             await SqlConnection.OpenAsync();
@@ -77,6 +84,7 @@ namespace Accountig
                 {
                     // вывод таблицы
                     listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    // прям здесь обращаться к полю аккаунт и суммировать в переменную, потом ее добавляй в поле листТекст2(должно отработать)
                 }
             }
             catch (Exception ex)
@@ -169,9 +177,14 @@ namespace Accountig
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            string dir = Directory.GetCurrentDirectory();
+            dir = System.IO.Path.GetDirectoryName(dir);
+            dir = System.IO.Path.GetDirectoryName(dir);
+            dir = String.Concat(dir, @"\");
             listBox3.Items.Clear();
             // подключение к БД
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'C:\Users\dmytro\Documents\Visual Studio 2015\Projects\Accountig\Accountig\Database.mdf'; Integrated Security = True";
+            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + @dir + "Database.mdf; Integrated Security = True";
+            //string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'C:\Users\dmytro\Documents\Visual Studio 2015\Projects\Accountig\Accountig\Database.mdf'; Integrated Security = True";
             // открытие асинхронного запроса
             SqlConnection = new SqlConnection(connectionString);
             await SqlConnection.OpenAsync();
