@@ -32,7 +32,7 @@ namespace Accountig
                 while (await SqlReader.ReadAsync())
                 {
                     // вывод таблицы
-                    listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "\t" + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "         " + Convert.ToString(SqlReader["Account"]));
                     // формируется сумма по счетам 
                     accountSum = accountSum + Convert.ToDecimal(SqlReader["Account"]);
                 }
@@ -92,7 +92,7 @@ namespace Accountig
                 while (await SqlReader.ReadAsync())
                 {
                     // вывод таблицы
-                    listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "\t" + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) +"         "+ Convert.ToString(SqlReader["Account"]));
                     // формируется сумма по счетам 
                     accountSum = accountSum + Convert.ToDecimal(SqlReader["Account"]);
                 }
@@ -136,9 +136,9 @@ namespace Accountig
                 command.Parameters.AddWithValue("Account", textBox2.Text);
 
                 await command.ExecuteNonQueryAsync();
+                textBox1.Text = "";
+                textBox2.Text = "";
                 RefreshTable();
-
-
             }
             else
             {
@@ -159,6 +159,10 @@ namespace Accountig
                 command.Parameters.AddWithValue("Account", textBox3.Text);
 
                await command.ExecuteNonQueryAsync();
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+
                 RefreshTable();
             }
             else
@@ -180,6 +184,8 @@ namespace Accountig
                 command.Parameters.AddWithValue("Id", textBox8.Text);
 
                 await command.ExecuteNonQueryAsync();
+
+                textBox8.Text = "";
                 RefreshTable();
             }
             else
@@ -218,8 +224,9 @@ namespace Accountig
                 while (await SqlReader.ReadAsync())
                 {
                     // вывод таблицы
-                    listBox3.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    listBox3.Items.Add(Convert.ToString(SqlReader["Id"]) + "\t" + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "         " + Convert.ToString(SqlReader["Account"]));
                 }
+                textBox6.Text = "";
             }
             catch (Exception ex)
             {
@@ -228,7 +235,7 @@ namespace Accountig
             }
             finally
             {
-
+               
                 // обязательно закрыть ридер если ему все же было присвоено значение
                 if (SqlReader != null)
                 {
