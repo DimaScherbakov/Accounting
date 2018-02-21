@@ -19,6 +19,7 @@ namespace Accountig
         SqlConnection SqlConnection;
         private async void RefreshTable()
         {
+            decimal accountSum = 0;
             listBox1.Items.Clear();
             SqlDataReader SqlReader = null;
             SqlCommand command = new SqlCommand("SELECT * FROM [Invoice] ", SqlConnection);
@@ -32,7 +33,13 @@ namespace Accountig
                 {
                     // вывод таблицы
                     listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
+                    // формируется сумма по счетам 
+                    accountSum = accountSum + Convert.ToDecimal(SqlReader["Account"]);
                 }
+                // запишем сумму по счетам
+                listBox2.Items.Clear();
+                listBox2.Items.Add(Convert.ToString(accountSum));
+                // сумма по счетам записана
             }
             catch (Exception ex)
             {
@@ -61,6 +68,7 @@ namespace Accountig
 
         private async void MainWindow_Load(object sender, EventArgs e)
         {
+            decimal accountSum = 0;
             string dir = Directory.GetCurrentDirectory();
             dir = System.IO.Path.GetDirectoryName(dir);
             dir = System.IO.Path.GetDirectoryName(dir);
@@ -74,18 +82,25 @@ namespace Accountig
             SqlDataReader SqlReader = null;
             //запрос sqlCommand(инструкция, )
             SqlCommand command = new SqlCommand("SELECT * FROM [Invoice] ", SqlConnection);
-
+            
             // обработчик
             try
             {
                 // присвоить результат выполнения команды для дальнейшего вывода
                 SqlReader = await command.ExecuteReaderAsync();
+                
                 while (await SqlReader.ReadAsync())
                 {
                     // вывод таблицы
                     listBox1.Items.Add(Convert.ToString(SqlReader["Id"]) + "  " + Convert.ToString(SqlReader["Name"]) + "  " + Convert.ToString(SqlReader["Date"]) + "  " + Convert.ToString(SqlReader["Account"]));
-                    // прям здесь обращаться к полю аккаунт и суммировать в переменную, потом ее добавляй в поле листТекст2(должно отработать)
+                    // формируется сумма по счетам 
+                    accountSum = accountSum + Convert.ToDecimal(SqlReader["Account"]);
                 }
+                // запишем сумму по счетам
+                listBox2.Items.Clear();
+                listBox2.Items.Add(Convert.ToString(accountSum));
+                // сумма по счетам записана
+
             }
             catch (Exception ex)
             {
@@ -213,6 +228,7 @@ namespace Accountig
             }
             finally
             {
+
                 // обязательно закрыть ридер если ему все же было присвоено значение
                 if (SqlReader != null)
                 {
